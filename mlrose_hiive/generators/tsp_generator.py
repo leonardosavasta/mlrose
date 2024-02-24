@@ -32,7 +32,7 @@ class TSPGenerator:
 
             g.add_edge(a, b, length=int(round(distance)))
 
-        return TSPOpt(coords=coords, distances=distances, maximize=False, source_graph=g)
+        return TSPOpt(coords=coords, distances=distances, maximize=True, source_graph=g)
 
 
     @staticmethod

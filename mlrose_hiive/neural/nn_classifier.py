@@ -27,8 +27,10 @@ class NNClassifier(_NNBase):
                  ):
         super().__init__()
 
+        self.classes_ = np.unique([0, 1])
         self.runner = runner
         self.grid_search_parameters = runner.grid_search_parameters
+        self._estimator_type = "classifier"
 
         # nn specific properties
         #  (grid-search settable)
@@ -147,4 +149,4 @@ class NNClassifier(_NNBase):
 
     def predict_proba(self, x_test):
         self.predict(x_test)
-        return self.predicted_probabilities
+        return np.array([np.array([1-i[0], i[0]]) for i in self.predicted_probabilities])
