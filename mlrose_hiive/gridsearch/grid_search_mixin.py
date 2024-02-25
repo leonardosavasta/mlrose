@@ -22,7 +22,7 @@ class GridSearchMixin:
         return search_results
 
     def make_scorer(self):
-        scorer = skmt.make_scorer(self._grid_search_score_intercept)
+        scorer = skmt.make_scorer(self._grid_search_score_intercept, needs_proba=True)
         return scorer
 
     def score(self, **kwargs):
